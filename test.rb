@@ -3,7 +3,7 @@ require 'pry'
 
 class ListAnalyzer
   def initialize
-    #@vowels = 
+    @vowels = ['a', 'e', 'i', 'o', 'u']
   end
 
   def number_of_words_starting_with_a_vowel list
@@ -17,7 +17,8 @@ class ListAnalyzer
   end
 
   def all_words_start_with_vowels? list
-
+    # one option:
+    #number_of_words_starting_with_a_vowel(list) == list.length
     list.each do |word|
       if !word.start_with?('a', 'e', 'i', 'o', 'u')
         return false
@@ -27,6 +28,8 @@ class ListAnalyzer
   end
 
   def some_word_starts_with_a_vowel? list
+    # one option:
+    #number_of_words_starting_with_a_vowel(list) > list.length
     list.each do |word|
       if word.start_with?('a', 'e', 'i', 'o', 'u')
         return true
@@ -36,15 +39,16 @@ class ListAnalyzer
   end
 
   def number_of_vowels_in_all_words list
-    vowels = 0
+    number_of_vowels = 0
     list.each do |word|
       word.each_char do |letter|
-        if letter == 'a' || letter == 'e' || letter =='i' || letter == 'o' || letter == 'u'
-          vowels += 1
+        #if letter == 'a' || letter == 'e' || letter =='i' || letter == 'o' || letter == 'u'
+        if @vowels.include?(letter)
+          number_of_vowels += 1
         end
       end
     end
-    return vowels
+    return number_of_vowels
   end
 
 
